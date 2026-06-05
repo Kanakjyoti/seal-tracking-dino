@@ -16,19 +16,17 @@ DINOv2's self-attention heads naturally highlight the seal with no manual input.
 
 *Six attention heads on a single frame. Head 3 most consistently highlights the full seal body.*
 
-<hr>
 
 ### Attention Consistency Across Frames
 Attention remains focused on the seal throughout the video. When the seal exits the frame, attention shifts to the next most visually salient object rather than diffusing across background water.
 
-***
+
 
 ### Multi-Seal Attention in Video 3
 On footage with multiple seals, attention highlights all seals simultaneously with no guidance. Attention weakens proportionally when seals are partially submerged, accurately reflecting reduced visual distinctiveness.
 
 ![Multi-seal attention](outputs/attention_maps/video3_multiseal_attention.png)
 
-***
 
 ### FeatUp: High Resolution Feature Maps
 Native DINOv2 produces a coarse 37×37 feature grid (one vector per 14×14 patch). FeatUp's learned decoder upsamples this to 512×512 genuine pixel-level features via four ×2 stages (32→64→128→256→512).
@@ -37,21 +35,21 @@ Native DINOv2 produces a coarse 37×37 feature grid (one vector per 14×14 patch
 
 *Left to right: original frame, native DINOv2 PCA (37×37 upsampled), input upscaling 728×728 (52×52 upsampled), FeatUp (512×512 genuine). FeatUp shows the sharpest seal boundary with no blockiness.*
 
-***
+
 
 ### Similarity Map Comparison
 Cosine similarity from a seed point on the seal body. Native DINOv2 and input upscaling both show a "candle glow" bleed into surrounding water which is an artifact of upsampling coarse patch features. FeatUp eliminates this entirely.
 
 ![Similarity map comparison](outputs/featup/similarity_map_comparison.png)
 
-***
+
 
 ### Boundary Sharpness Analysis
 Plotting similarity values along a horizontal scan line crossing the seal/water boundary. Native DINOv2 shows a staircase pattern (discrete patch steps). Input upscaling improves this but remains patch-limited. FeatUp shows a steep, smooth drop at the actual boundary.
 
 ![Boundary sharpness analysis](outputs/featup/boundary_sharpness_analysis.png)
 
-***
+
 
 ### Single Seal Tracking
 Similarity-based tracking with motion constraints. The tracker maintains a bounding box across frames using cosine similarity to a reference feature and a search radius centered on the previous position.
@@ -60,7 +58,7 @@ Similarity-based tracking with motion constraints. The tracker maintains a bound
 |---|---|
 | ![](outputs/videos/video1_tracking_518.gif) | ![](outputs/videos/video1_tracking_728.gif) |
 
-***
+
 
 ### Multi-Seal Tracking
 Tracking multiple seals simultaneously using connected component detection and nearest-center ID assignment. KMeans splitting was tested but reverted, it improved some merged detections but introduced more ID switches. Nearest-center tracking is the more stable baseline.
