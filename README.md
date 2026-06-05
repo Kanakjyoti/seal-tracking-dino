@@ -16,7 +16,7 @@ DINOv2's self-attention heads naturally highlight the seal with no manual input.
 
 *Six attention heads on a single frame. Head 3 most consistently highlights the full seal body.*
 
-***
+<hr>
 
 ### Attention Consistency Across Frames
 Attention remains focused on the seal throughout the video. When the seal exits the frame, attention shifts to the next most visually salient object rather than diffusing across background water.
