@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.env/
+
+# Jupyter 
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Data (private / large)
+data/raw_videos/*
+data/frames/*
+
+# Keep folder structure
+!data/raw_videos/.gitkeep
+!data/frames/.gitkeep
+
